@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/17 15:09:52 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/17 15:43:09 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_stack	*lstnew(void const *value)
 	return (list);
 }
 
-
 int add(int number, t_stack **stack)
 {
 	t_stack *new;
@@ -50,12 +49,10 @@ int add(int number, t_stack **stack)
 	return (0);
 }
 
-
-int parse(char **argv, t_stack **stack)
+int parse(char **argv, t_stack **stack, t_push *push)
 {
 	int i;
 	int x;
-
 	i = 0;
 	while(argv[i])
 	{	
@@ -65,9 +62,10 @@ int parse(char **argv, t_stack **stack)
 			if (argv[i][x] == ' ' || argv[i][x] == '\n')
 				continue ;
 			if (ft_isdigit(argv[i][x]))
-				{
-					add(argv[i][x] - '0', stack);
-				}
+			{
+				add(argv[i][x] - '0', stack);
+				push->totalnumber++;
+			}
 			else
 			{
 				printf("%c is not a integer. Please use only integer", argv[i][x]);
@@ -81,15 +79,16 @@ int parse(char **argv, t_stack **stack)
 }
 
 
-void readList(t_stack *stack)
+void readList(t_stack *stack, t_push push)
 {
 	t_stack *tmp;
 
 	tmp = stack;
-	while (tmp)
+	while (push.totalnumber > 0)
 	{
 		ft_putnbr(tmp->value);
 		tmp = tmp->next;
+		push.totalnumber--;
 	}
 }
 
@@ -97,17 +96,18 @@ int main(int argc, char **argv)
 {
 	t_stack *stacka;
 	t_stack *stackb;
+	t_push push;
 
-
+	push.totalnumber = 0;
 	if (argc < 2)
 	{
-		printf("Please insert A stack");
+		printf("Please insert a lot of numbers");
 		return (-1);
 	}
 	
 	stacka = lstnew(0);
 	stackb = (t_stack*)malloc(argc * sizeof(t_stack));
-	parse(argv + 1, &stacka);
-	readList(stacka);
+	parse(argv + 1, &stacka, &push);
+	readList(stacka, push);
 	return (1);
 }
