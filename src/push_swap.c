@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/17 15:43:09 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/18 14:02:10 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ int parse(char **argv, t_stack **stack, t_push *push)
 {
 	int i;
 	int x;
-	i = 0;
-	while(argv[i])
+	i = push->argc-2;
+	printf("[i  = %d] [s = %s]", i, argv[3]);
+	while(i > 0)
 	{	
-		x = 0;
-		while (argv[i][x])
+		x = ft_strlen(argv[i]) -1;
+		while (x >= 0)
 		{
 			if (argv[i][x] == ' ' || argv[i][x] == '\n')
 				continue ;
@@ -71,9 +72,9 @@ int parse(char **argv, t_stack **stack, t_push *push)
 				printf("%c is not a integer. Please use only integer", argv[i][x]);
 				return (0);
 			}
-			x++;
+			x--;
 		}
-		i++;
+		i--;
 	}
 	return (1);
 }
@@ -94,10 +95,9 @@ void readList(t_stack *stack, t_push push)
 
 int main(int argc, char **argv)
 {
-	t_stack *stacka;
-	t_stack *stackb;
 	t_push push;
-
+	
+	push.argc = argc;
 	push.totalnumber = 0;
 	if (argc < 2)
 	{
@@ -105,9 +105,9 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	
-	stacka = lstnew(0);
-	stackb = (t_stack*)malloc(argc * sizeof(t_stack));
-	parse(argv + 1, &stacka, &push);
-	readList(stacka, push);
+	push.stacka = lstnew(0);
+	push.stackb = (t_stack*)malloc(argc * sizeof(t_stack));
+	parse(argv + 1, &push.stacka, &push);
+	readList(push.stacka, push);
 	return (1);
 }

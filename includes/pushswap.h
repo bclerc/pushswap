@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/17 15:11:23 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/18 13:54:09 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 # include "libft/libft.h"
 # include <stdio.h>
 
-typedef struct s_push
-{
-	int totalnumber;
-}				t_push;
 
 typedef struct		s_stack
 {
@@ -26,5 +22,14 @@ typedef struct		s_stack
 	void	*next;
 
 }				t_stack;
+
+typedef struct s_push
+{
+	int 	totalnumber;
+	int		argc;
+	t_stack *stacka;
+	t_stack *stackb;
+
+}				t_push;
 
 #endif
