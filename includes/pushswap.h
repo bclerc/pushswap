@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/18 13:54:09 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/18 15:56:07 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_push
 {
 	int 	totalnumber;
 	int		argc;
+	int		sizea;
+	int		sizeb;
 	t_stack *stacka;
 	t_stack *stackb;
 
