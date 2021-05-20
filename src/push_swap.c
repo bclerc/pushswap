@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/20 14:17:20 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/20 15:34:38 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*lstnew(void const *value)
 		return (NULL);
 	if (!value)
 	{
-		list->value = 0;
+		list->value = (int)value;
 		list->next = NULL;
 		return (list);
 	}
@@ -44,6 +44,10 @@ int add(int number, t_stack **stack)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	new->value = number;	
+	if (stack == NULL)
+	{
+		*stack = lstnew((void *)number);	
+	}
 	if (stack != NULL && new != NULL)
 	{
 
@@ -99,13 +103,14 @@ void readList(t_stack *stack, t_push push)
 	t_stack *tmp;
 
 	tmp = stack;
-	while (push.totalnumber > 0)
+	while (tmp->next)
 	{
 		ft_putnbr(tmp->value);
 		ft_putchar(' ');
 		tmp = tmp->next;
-		push.totalnumber--;
 	}
+		ft_putnbr(tmp->value);
+		ft_putchar(' ');
 }
 
 int main(int argc, char **argv)
@@ -121,7 +126,7 @@ int main(int argc, char **argv)
 		printf("Please insert a lot of numbers");
 		return (-1);
 	}
-	push.stacka = lstnew(0);
+	push.stacka = 0;
 	push.stackb = lstnew(0);
 	parse(argv + 1, &push.stacka, &push);
 	readList(push.stacka, push);
@@ -130,7 +135,14 @@ int main(int argc, char **argv)
 	readList(push.stacka, push);
 	pa(&push);
 	stacksize(&push);
-		readList(push.stacka, push);
+	readList(push.stacka, push);
 	printf(" Nb %d\n", push.stackb->value);
+	pb(&push);
+	stacksize(&push);
+	readList(push.stacka, push);
+	ra(&push);
+	stacksize(&push);
+	readList(push.stacka, push);
 	return (1);
 }
+

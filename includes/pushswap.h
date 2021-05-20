@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/20 14:12:58 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/20 15:21:13 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void ss(t_push *push);
 void sb(t_push *push);
 void sa(t_push *push);
 int pa(t_push *push);
+int pb(t_push *push);
+int	ra(t_push *push);
 int	 add(int number, t_stack** stack);
 
 #endif
