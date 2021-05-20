@@ -6,11 +6,13 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/18 16:32:46 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/05/20 14:17:20 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/pushswap.h"
+
+// Y a pas de norme je sais
 
 void	stacksize(t_push *push)
 {
@@ -53,6 +55,20 @@ int add(int number, t_stack **stack)
 	return (0);
 }
 
+int isNumber(char *number)
+{
+	int i;
+
+	i = 0;
+	while (number[i])
+	{
+		if (!ft_isdigit(number[i]) && (number[i] != '-'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int parse(char **argv, t_stack **stack, t_push *push)
 {
 	int i;
@@ -61,28 +77,22 @@ int parse(char **argv, t_stack **stack, t_push *push)
 	i = push->argc - 2;
 	while(i >= 0)
 	{
-		x = ft_strlen(argv[i]) -1;
-		while (x >= 0)
-		{
-			if (argv[i][x] == ' ' || argv[i][x] == '\n')
-				continue ;
-			if (ft_isdigit(argv[i][x]))
+			if (isNumber(argv[i]))
 			{
-				add(argv[i][x] - '0', stack);
+				add(ft_atoi(argv[i]), stack);
 				push->sizea++;
 				push->totalnumber++;
 			}
 			else
 			{
-				printf("%c is not a integer. Please use only integer", argv[i][x]);
+				printf("%s is not a integer. Please use only integer", argv[i]);
 				return (0);
 			}
-			x--;
-		}
 		i--;
 	}
 	return (1);
 }
+
 
 void readList(t_stack *stack, t_push push)
 {
@@ -92,55 +102,11 @@ void readList(t_stack *stack, t_push push)
 	while (push.totalnumber > 0)
 	{
 		ft_putnbr(tmp->value);
+		ft_putchar(' ');
 		tmp = tmp->next;
 		push.totalnumber--;
 	}
 }
-
-void sa(t_push *push)
-{
-	t_stack *tmp1;
-	t_stack *tmp2;
-	t_stack *tmp3;
-	t_stack *tmp4;
-	if (push->sizea > 1)
-	{
-		tmp1 = push->stacka;
-		tmp2 = tmp1->next;
-		tmp3 = tmp2->next;
-		tmp2->next = tmp1;
-		push->stacka = tmp2;
-		push->stacka->next = tmp1;
-		tmp4 = push->stacka->next;
-		tmp4->next = tmp3;
-	}
-}
-
-void sb(t_push *push)
-{
-	t_stack *tmp1;
-	t_stack *tmp2;
-	t_stack *tmp3;
-	t_stack *tmp4;
-	if (push->sizeb > 1)
-	{
-		tmp1 = push->stackb;
-		tmp2 = tmp1->next;
-		tmp3 = tmp2->next;
-		tmp2->next = tmp1;
-		push->stackb = tmp2;
-		push->stackb->next = tmp1;
-		tmp4 = push->stackb->next;
-		tmp4->next = tmp3;
-	}
-}
-
-void ss(t_push *push)
-{
-	sa(push);
-	sb(push);
-}
-
 
 int main(int argc, char **argv)
 {
@@ -155,7 +121,6 @@ int main(int argc, char **argv)
 		printf("Please insert a lot of numbers");
 		return (-1);
 	}
-	
 	push.stacka = lstnew(0);
 	push.stackb = lstnew(0);
 	parse(argv + 1, &push.stacka, &push);
@@ -163,5 +128,9 @@ int main(int argc, char **argv)
 	stacksize(&push);
 	sa(&push);
 	readList(push.stacka, push);
+	pa(&push);
+	stacksize(&push);
+		readList(push.stacka, push);
+	printf(" Nb %d\n", push.stackb->value);
 	return (1);
 }
