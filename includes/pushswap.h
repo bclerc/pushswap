@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/20 15:40:17 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/14 16:24:50 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int 	pa(t_push *push);
 int 	pb(t_push *push);
 int		ra(t_push *push);
 int		rb(t_push *push);
+int		rra(t_push *push);
+int		rrb(t_push *push);
+int		rrr(t_push *push);
 int	 	add(int number, t_stack** stack);
 
 #endif

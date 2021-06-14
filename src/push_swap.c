@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/20 15:34:38 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/14 17:42:07 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	stacksize(t_push *push)
 {
-		printf("\nTaille de la pile A : %d | Taille de la pile B : %d\n", push->sizea, push->sizeb);
+		printf(" | Taille de la pile A : %d | Taille de la pile B : %d\n", push->sizea, push->sizeb);
 }
 t_stack	*lstnew(void const *value)
 {
@@ -141,6 +141,9 @@ int main(int argc, char **argv)
 	stacksize(&push);
 	readList(push.stacka, push);
 	ra(&push);
+	stacksize(&push);
+	readList(push.stacka, push);
+	rra(&push);
 	stacksize(&push);
 	readList(push.stacka, push);
 	return (1);
