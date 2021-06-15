@@ -6,49 +6,41 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:43:25 by bclerc            #+#    #+#             */
-/*   Updated: 2021/06/14 16:26:34 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/15 15:14:48 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
 int	rra(t_push *push)
-{	
+{
 	t_stack *tmp;
 	t_stack *head;
 
 	head = push->stacka;
-	tmp = head->next;
-	while (tmp->next)
+	while (push->stacka->next)
 	{
-		tmp = tmp->next;
+		tmp = push->stacka;
+		push->stacka = push->stacka->next;
 	}
-	push->stacka = head->next;
-	tmp->next = head;
-	head->next = NULL;
-
+	tmp->next = NULL;
+	push->stacka->next = head;
 	return (1);
 }
 
 int	rrb(t_push *push)
 {
-
 	t_stack *tmp;
 	t_stack *head;
 
 	head = push->stackb;
-	tmp = head->next;
 	while (tmp->next)
 	{
-		tmp = tmp->next;
+		tmp = head->next;
+		push->stackb = push->stackb->next;
 	}
-	push->stackb = head->next;
-	tmp->next = head;
-	head->next = NULL;
-
-	return (1);
-
-
+	tmp->next = NULL;
+	push->stackb = head;
 	return (1);
 }
 
