@@ -6,18 +6,19 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:00:18 by bclerc            #+#    #+#             */
-/*   Updated: 2021/05/20 15:00:19 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/15 15:27:15 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-void sa(t_push *push)
+void	sa(t_push *push)
 {
-	t_stack *tmp1;
-	t_stack *tmp2;
-	t_stack *tmp3;
-	t_stack *tmp4;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+	t_stack	*tmp3;
+	t_stack	*tmp4;
+
 	if (push->sizea > 1)
 	{
 		tmp1 = push->stacka;
@@ -31,12 +32,13 @@ void sa(t_push *push)
 	}
 }
 
-void sb(t_push *push)
+void	sb(t_push *push)
 {
-	t_stack *tmp1;
-	t_stack *tmp2;
-	t_stack *tmp3;
-	t_stack *tmp4;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+	t_stack	*tmp3;
+	t_stack	*tmp4;
+
 	if (push->sizeb > 1)
 	{
 		tmp1 = push->stackb;
@@ -50,7 +52,7 @@ void sb(t_push *push)
 	}
 }
 
-void ss(t_push *push)
+void	ss(t_push *push)
 {
 	sa(push);
 	sb(push);

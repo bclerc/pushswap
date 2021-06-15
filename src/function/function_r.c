@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 15:03:29 by bclerc            #+#    #+#             */
-/*   Updated: 2021/06/14 16:14:48 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/15 15:25:45 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ra(t_push *push)
 {
-	t_stack *tmp;
-	t_stack *head;
-	
+	t_stack	*tmp;
+	t_stack	*head;
+
 	if (push->stacka && push->stacka->next)
 	{
 		tmp = push->stacka;
@@ -34,9 +34,9 @@ int	ra(t_push *push)
 
 int	rb(t_push *push)
 {
-	t_stack *tmp;
-	t_stack *head;
-	
+	t_stack	*tmp;
+	t_stack	*head;
+
 	if (push->stackb && push->stackb->next)
 	{
 		tmp = push->stackb;
@@ -52,9 +52,8 @@ int	rb(t_push *push)
 	return (0);
 }
 
-void rr(t_push *push)
+void	rr(t_push *push)
 {
 	ra(push);
 	rb(push);
 }
-

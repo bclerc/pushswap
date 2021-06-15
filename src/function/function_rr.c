@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:43:25 by bclerc            #+#    #+#             */
-/*   Updated: 2021/06/15 15:14:48 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/15 15:25:03 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	rra(t_push *push)
 {
-	t_stack *tmp;
-	t_stack *head;
+	t_stack	*tmp;
+	t_stack	*head;
 
 	head = push->stacka;
 	while (push->stacka->next)
@@ -30,8 +30,8 @@ int	rra(t_push *push)
 
 int	rrb(t_push *push)
 {
-	t_stack *tmp;
-	t_stack *head;
+	t_stack	*tmp;
+	t_stack	*head;
 
 	head = push->stackb;
 	while (tmp->next)
