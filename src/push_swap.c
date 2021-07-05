@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/06/15 15:23:41 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/06/28 12:55:02 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 t_stack	*lstnew(void const *value)
 {
 	t_stack *list;
-
 	if (!(list = malloc(sizeof(t_list))))
 		return (NULL);
 	if (!value)
@@ -46,7 +45,6 @@ int add(int number, t_stack **stack)
 	}
 	if (stack != NULL && new != NULL)
 	{
-
 		new->next = *stack;
 		*stack = new;
 		return (1);
@@ -142,7 +140,7 @@ int main(int argc, char **argv)
 	readList(push.stacka, push);
 	ra(&push);
 	readList(push.stacka, push);
-	
+	small_sort(&push);
 	return (1);
 }
 
