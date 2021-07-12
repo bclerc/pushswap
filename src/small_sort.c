@@ -6,12 +6,21 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 13:00:42 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/12 03:13:57 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/12 04:24:19 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-
+void sort_f(int b, t_push *push)
+{
+	while (b > 0)
+	{
+		rra(push);
+		b--;
+	}
+	pa(push);
+	printf(" ");
+}
 void  small_sort(t_push *push)
 {
 	int i;
@@ -37,13 +46,5 @@ void  small_sort(t_push *push)
 		tmp = tmp->next;
 		b++;
 	}
-	b = push->sizea - i;
-	while (b > 0)
-	{
-		rra(push);
-		b--;
-	}
-	i = 0;
-	pa(push);
-	printf("1");
+	sort_f(push->sizea - i, push);
 }
