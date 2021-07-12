@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/06/28 13:15:33 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/12 01:33:06 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ int		rrr(t_push *push);
 int	 	add(int number, t_stack** stack);
 void	stackdel(t_stack *alst);
 void	stackdelone(t_stack *alst);
-int		small_sort(t_push *push);
+void	small_sort(t_push *push);
 #endif

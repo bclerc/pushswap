@@ -94,7 +94,12 @@ int parse(char **argv, t_stack **stack, t_push *push)
 void readList(t_stack *stack, t_push push)
 {
 	t_stack *tmp;
-
+	
+	if (stack == NULL)
+	{
+		printf("Empty stack\n");
+		return ;
+	}
 	tmp = stack;
 	while (tmp->next)
 	{
@@ -123,24 +128,16 @@ int main(int argc, char **argv)
 	push.stacka = 0;
 	push.stackb = lstnew(0);
 	parse(argv + 1, &push.stacka, &push);
-	readList(push.stacka, push);
-	rra(&push);
-	readList(push.stacka, push);
-	rra(&push);
-	readList(push.stacka, push);
-	rra(&push);
-	readList(push.stacka, push);
-	rra(&push);
-	readList(push.stacka, push);
-	ra(&push);
-	readList(push.stacka, push);
-	ra(&push);
-	readList(push.stacka, push);
-	ra(&push);
-	readList(push.stacka, push);
-	ra(&push);
-	readList(push.stacka, push);
-	small_sort(&push);
+	int b = 5;
+	if (argc < 6)
+	{
+		while (push.sizea > 0)
+			small_sort(&push);
+		while (push.sizeb > 0)
+			pb(&push);
+		readList(push.stacka, push);
+	}
+
 	return (1);
 }
 

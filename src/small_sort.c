@@ -6,14 +6,13 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 13:00:42 by bclerc            #+#    #+#             */
-/*   Updated: 2021/06/28 14:44:47 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/12 03:13:57 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/pushswap.h"
 
-int small_sort(t_push *push)
+void  small_sort(t_push *push)
 {
 	int i;
 	int b;
@@ -22,10 +21,11 @@ int small_sort(t_push *push)
 	t_stack *tmp;
 
 	if (push->sizea > 5)
-		return (0);
+		return ;
 	i = 0;
 	b = 0;
 	tmp = push->stacka;
+	value = 9000;
 	while (b < push->sizea)
 	{	
 		if (tmp->value < value)
@@ -37,7 +37,6 @@ int small_sort(t_push *push)
 		tmp = tmp->next;
 		b++;
 	}
-	printf("\n -------------> %d Position : %d Ra: %d\n", value, i, push->sizea - i);
 	b = push->sizea - i;
 	while (b > 0)
 	{
@@ -46,8 +45,5 @@ int small_sort(t_push *push)
 	}
 	i = 0;
 	pa(push);
-	readList(push->stacka, push);
-	if (push->sizea > 0)
-		small_sort(push);
-	return (1);
+	printf("1");
 }
