@@ -15,7 +15,7 @@
 // Y a pas de norme je sais
 
 t_stack	*lstnew(void const *value)
-{
+{	
 	t_stack *list;
 	if (!(list = malloc(sizeof(t_list))))
 		return (NULL);
@@ -38,10 +38,11 @@ int add(int number, t_stack **stack)
 	t_stack *new;
 
 	new = (t_stack *)malloc(sizeof(t_stack));
-	new->value = number;	
+	new->value = number;
 	if (stack == NULL)
 	{
 		*stack = lstnew((void *)number);	
+		while(1);
 	}
 	if (stack != NULL && new != NULL)
 	{
@@ -91,7 +92,7 @@ int parse(char **argv, t_stack **stack, t_push *push)
 }
 
 
-void readList(t_stack *stack, t_push push)
+void readList(t_stack *stack)
 {
 	t_stack *tmp;
 	
@@ -126,18 +127,14 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	push.stacka = 0;
-	push.stackb = lstnew(0);
+	push.stackb = 0;
 	parse(argv + 1, &push.stacka, &push);
 	int b = 5;
-	if (argc < 6)
+		readList(push.stacka);
+	if (argc < 5)
 	{
-		while (push.sizea > 0)
-			small_sort(&push);
-		while (push.sizeb > 0)
-			pb(&push);
-		readList(push.stacka, push);
+		three_sort(&push);
+		readList(push.stacka);
 	}
-
 	return (1);
 }
-

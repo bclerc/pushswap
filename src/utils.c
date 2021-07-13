@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   small_sort.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 13:00:42 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/13 15:40:34 by bclerc           ###   ########.fr       */
+/*   Created: 2021/07/12 23:47:23 by bclerc            #+#    #+#             */
+/*   Updated: 2021/07/13 15:06:01 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
-
-void  three_sort(t_push *push)
+int check_sort(t_push *push, t_stack *stack)
 {
-	if (three_sa(push))
-		return ;
-	if (three_sa_rra(push))
-		return ;
-	if (three_ra(push))
-		return ;
-	if (three_sa_ra(push))
-		return ;
-	if (three_rra(push))
-		return ;
+    int last;
+    int i;
+    t_stack *tmp;
+
+    tmp = stack;
+    i = push->sizea;
+    while (tmp->next)
+    {
+        if (tmp->value > tmp->next->value)
+            return 0;
+        tmp = tmp->next;
+    }
+    
+    return 1;
 }
+ 

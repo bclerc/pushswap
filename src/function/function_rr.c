@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:43:25 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/12 03:15:11 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/13 15:04:54 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	rra(t_push *push)
 	}
 	tmp->next = NULL;
 	push->stacka->next = head;
-	ft_putstr("rra ");
 	return (1);
 }
 
@@ -42,7 +41,6 @@ int	rrb(t_push *push)
 	}
 	tmp->next = NULL;
 	push->stackb = head;
-	ft_putstr("rrb ");
 	return (1);
 }
 
