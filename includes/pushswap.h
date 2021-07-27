@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/13 15:01:20 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 00:37:48 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,18 @@ typedef struct s_push
 
 }				t_push;
 
+int		pushs(t_stack **stack, t_stack **stack2);
 int 	three_sa(t_push *push);
 int 	three_sa_rra(t_push *push);
 int		three_ra(t_push *push);
 int		three_sa_ra(t_push *push);
 int		three_rra(t_push *push);
 void 	ss(t_push *push);
-void 	sb(t_push *push);
-void 	sa(t_push *push);
 void	rr(t_push *push);
-int 	pa(t_push *push);
-int 	pb(t_push *push);
-int		ra(t_push *push);
-int		rb(t_push *push);
-int		rra(t_push *push);
-int		rrb(t_push *push);
 int		rrr(t_push *push);
+int		reverse_rotate(t_stack **stack);
+void	swap(t_stack **stack);
+int		rotate(t_stack **stack);
 int 	check_sort(t_push *push, t_stack *stack);
 int	 	add(int number, t_stack** stack);
 void	readList(t_stack *stack);

@@ -6,54 +6,28 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:00:18 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/13 15:04:43 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 00:13:56 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-void	sa(t_push *push)
+void	swap(t_stack **stack)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
-	t_stack	*tmp3;
-	t_stack	*tmp4;
 
-	if (push->sizea > 1)
-	{
-		tmp1 = push->stacka;
-		tmp2 = tmp1->next;
-		tmp3 = tmp2->next;
-		tmp2->next = tmp1;
-		push->stacka = tmp2;
-		push->stacka->next = tmp1;
-		tmp4 = push->stacka->next;
-		tmp4->next = tmp3;
-	}
-}
-
-void	sb(t_push *push)
-{
-	t_stack	*tmp1;
-	t_stack	*tmp2;
-	t_stack	*tmp3;
-	t_stack	*tmp4;
-
-	if (push->sizeb > 1)
-	{
-		tmp1 = push->stackb;
-		tmp2 = tmp1->next;
-		tmp3 = tmp2->next;
-		tmp2->next = tmp1;
-		push->stackb = tmp2;
-		push->stackb->next = tmp1;
-		tmp4 = push->stackb->next;
-		tmp4->next = tmp3;
-	}
+	if ((*stack) == NULL)
+		return ;
+	tmp1 = *stack;
+	tmp2 = (*stack)->next;
+	tmp1->next = tmp2->next;
+	tmp2->next = tmp1;
+	(*stack) = tmp2;
 }
 
 void	ss(t_push *push)
 {
-	sa(push);
-	sb(push);
+	swap(&push->stacka);
+	swap(&push->stackb);
 }

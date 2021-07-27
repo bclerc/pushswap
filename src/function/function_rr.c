@@ -6,47 +6,31 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:43:25 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/13 15:04:54 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 00:34:26 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	rra(t_push *push)
+int	reverse_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*head;
 
-	head = push->stacka;
-	while (push->stacka->next)
+	head = *stack;
+	while ((*stack)->next)
 	{
-		tmp = push->stacka;
-		push->stacka = push->stacka->next;
+		tmp = *stack;
+		*stack = (*stack)->next;
 	}
 	tmp->next = NULL;
-	push->stacka->next = head;
-	return (1);
-}
-
-int	rrb(t_push *push)
-{
-	t_stack	*tmp;
-	t_stack	*head;
-
-	head = push->stackb;
-	while (tmp->next)
-	{
-		tmp = head->next;
-		push->stackb = push->stackb->next;
-	}
-	tmp->next = NULL;
-	push->stackb = head;
+	(*stack)->next = head;
 	return (1);
 }
 
 int	rrr(t_push *push)
 {
-	rra(push);
-	rrb(push);
+	reverse_rotate(&push->stacka);
+	reverse_rotate(&push->stackb);
 	return (1);
 }
