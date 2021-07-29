@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:00:18 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/28 00:13:56 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 16:14:12 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	swap(t_stack **stack)
 
 void	ss(t_push *push)
 {
-	swap(&push->stacka);
-	swap(&push->stackb);
+	swap(push->stacka);
+	swap(push->stackb);
 }

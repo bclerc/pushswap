@@ -15,6 +15,7 @@ SOURCES = \
 		./src/small_sort.c \
 		./src/three_sort.c \
 		./src/utils.c \
+		./src/five_sort.c \
 		./src/function/function_p.c \
 		./src/function/function_r.c \
 		./src/function/function_rr.c \

@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/28 00:38:52 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 23:55:56 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,23 +86,27 @@ void readList(t_stack *stack)
 
 int main(int argc, char **argv)
 {
-	t_push push;
+	t_push *push;
 	t_stack *stacka;
 	t_stack *stackb;
 
-	push.argc = argc;
-	push.totalnumber = 0;
+	push = malloc(sizeof(t_push));
 	if (argc < 2)
 	{
 		printf("Please insert a lot of numbers");
 		return (-1);
 	}
 	stacka = createstack(argc, argv);
-	stackb = createstack(0, NULL);
-	push.stacka = stacka;
-	push.stackb = stackb;
-	readList(stacka);
-	readList(stacka);
-
+	stackb = createstack(0, NULL);		
+	push->stacka = &stacka;
+	push->stackb = &stackb;
+	if (argc < 5)
+		three_sort(&stacka);
+	if (argc == 6)
+	{
+		five_sort(push);
+	}
+	readList(*push->stacka);
+	readList(*push->stackb);
 	return (1);
 }

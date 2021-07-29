@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:43:25 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/28 00:34:26 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 19:26:53 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	reverse_rotate(t_stack **stack)
 
 int	rrr(t_push *push)
 {
-	reverse_rotate(&push->stacka);
-	reverse_rotate(&push->stackb);
+	reverse_rotate(push->stacka);
+	reverse_rotate(push->stackb);
 	return (1);
 }

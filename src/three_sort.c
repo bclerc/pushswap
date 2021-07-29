@@ -6,76 +6,72 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 13:11:41 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/27 23:25:39 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/07/28 19:30:44 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-//int three_sa(t_push *push)
-//{
-//    printf("ici : \n");
-//    readList(push->stacka);
-//    sa(push);
-//    readList(push->stacka);
-//    if (check_sort(push, push->stacka))
-//    {
-//        printf("%s\n", THREE_SA);
-//        return (1);
-//    }
-//    sa(push);
-//    return (0);
-//}
-//
-//int three_sa_rra(t_push *push)
-//{
-//    sa(push);
-//    rra(push);
-//    if (check_sort(push, push->stacka))
-//    {
-//        printf("%s\n", THREE_SA_RRA);
-//        return (1);
-//    }
-//    ra(push);
-//    sa(push);
-//    return (0);
-//}
-//
-//int three_ra(t_push *push)
-//{
-//    ra(push);
-//    if (check_sort(push, push->stacka))
-//    {
-//        printf("%s\n", THREE_RA);
-//        return (1);
-//    }
-//    rra(push);
-//    readList(push->stacka);
-//    return (0);
-//}
-//
-//int three_sa_ra(t_push *push)
-//{
-//    sa(push);
-//    ra(push);
-//    if (check_sort(push, push->stacka))
-//    {
-//        printf("%s\n", THREE_SA_RA);
-//        return (1);
-//    }
-//    rra(push);
-//    sa(push);
-//    return (0);
-//}
-//
-//int three_rra(t_push *push)
-//{
-//    rra(push);
-//    if (check_sort(push, push->stacka))
-//    {
-//        printf("%s\n", THREE_RRA);
-//        return (1);
-//    }
-//    ra(push);
-//    return (0);
-//}
+int three_sa(t_stack **stack)
+{
+    swap(stack);
+    if (check_sort(*stack))
+    {
+        printf("%s\n", THREE_SA);
+        return (1);
+    }
+    swap(stack);
+    return (0);
+}
+
+int three_sa_rra(t_stack **stack)
+{
+    swap(stack);
+    reverse_rotate(stack);
+    if (check_sort(*stack))
+    {
+        printf("%s\n", THREE_SA_RRA);
+        return (1);
+    }
+    rotate(stack);
+    swap(stack);
+    return (0);
+}
+
+int three_ra(t_stack **stack)
+{
+    rotate(stack);
+    if (check_sort(*stack))
+    {
+        printf("%s\n", THREE_RA);
+        return (1);
+    }
+    reverse_rotate(stack);
+    return (0);
+}
+
+int three_sa_ra(t_stack **stack)
+{
+    swap(stack);
+    rotate(stack);
+    if (check_sort(*stack))
+    {
+        printf("%s\n", THREE_SA_RA);
+        return (1);
+    }
+    reverse_rotate(stack);
+    swap(stack);
+    return (0);
+}
+
+int three_rra(t_stack **stack)
+{
+    reverse_rotate(stack);
+    if (check_sort(*stack))
+    {
+        printf("%s\n", THREE_RRA);
+        return (1);
+    }
+    rotate(stack);
+    return (0);
+}
