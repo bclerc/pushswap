@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/03 17:01:57 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/03 17:27:44 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int get_high_pos(t_stack **stack)
 
 	tmp = *stack;
 	pos = 0;
+	i = 0;
+	value = tmp->value;
 	while (tmp)
 	{
 		if (tmp->value > value)
@@ -74,7 +76,7 @@ int get_high_pos(t_stack **stack)
 		tmp = tmp->next;
 
 	}
-	return (i);
+	return (pos);
 }
 
 int get_low_pos(t_stack **stack)
@@ -87,6 +89,7 @@ int get_low_pos(t_stack **stack)
 	tmp = *stack;
 	pos = 0;
 	value = tmp->value;
+	i = 0;
 	while (tmp)
 	{
 		if (tmp->value < value)
@@ -102,13 +105,16 @@ int get_low_pos(t_stack **stack)
 int smart_push_a(t_push *push)
 {
 	// 0 : rb, 1 : rrb 
-		int higher = get_high_pos(push->stackb);
-		int lower = get_low_pos(push->stackb);
+		int higher = get_high_pos(push->stackb) ;
+		int lower = get_low_pos(push->stackb) ;
 		t_instruct higher_instruct;
 		t_instruct lower_instruct;
 		t_instruct final_instruct;
 	//higher
 
+
+
+	printf("Higher : %d\nLower : %d\n",higher, lower);
 
 	if (higher  < (push->size / 2))
 	{	
@@ -118,7 +124,7 @@ int smart_push_a(t_push *push)
 	else
 	{
 
-		higher_instruct.needed = ft_abs(push->size - higher);
+		higher_instruct.needed = ft_abs(push->size - higher) + 1;
 		higher_instruct.type = 1;
 	}
 	
@@ -129,7 +135,7 @@ int smart_push_a(t_push *push)
 	}
 	else
 	{
-		lower_instruct.needed = ft_abs(push->size - lower);
+		lower_instruct.needed = ft_abs(push->size - lower) + 1;
 		lower_instruct.type = 1;
 	}
 	
