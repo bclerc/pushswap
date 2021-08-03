@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/03 17:37:45 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/03 18:28:37 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,27 @@ int get_low_pos(t_stack **stack)
 }
 // FIN ICI AUTRE FICHIER
 
+void	do_instruct(t_push *push, t_instruct instruct)
+{
+	int i;
+
+	i = 0;
+	if (instruct.top)
+		push->ra = push->ra + 1;
+	while (i < instruct.needed)
+	{
+		if (instruct.type)
+			reverse_rotate(push->stackb);
+		else
+			rotate(push->stackb);
+		i++;
+	}
+	pushs(push->stackb, push->stacka);
+	if (!instruct.top)
+		rotate(push->stacka);
+
+}
+
 int smart_push_a(t_push *push)
 {
 	// 0 : rb, 1 : rrb 
@@ -119,9 +140,9 @@ int smart_push_a(t_push *push)
 	//higher
 
 
+	//printf("Higher : %d\nLower : %d\n",higher, lower);
 
-	printf("Higher : %d\nLower : %d\n",higher, lower);
-
+	higher_instruct.top = 1;
 	if (higher  < (push->size / 2))
 	{	
 		higher_instruct.needed = higher;
@@ -133,7 +154,7 @@ int smart_push_a(t_push *push)
 		higher_instruct.needed = ft_abs(push->size - higher) + 1;
 		higher_instruct.type = 1;
 	}
-	
+	lower_instruct.top = 0;
 	if (lower  < (push->size / 2))
 	{
 		lower_instruct.needed = lower;
@@ -141,22 +162,22 @@ int smart_push_a(t_push *push)
 	}
 	else
 	{
-		printf("bite bite %d", push->size);
 		lower_instruct.needed = ft_abs(push->size - lower) + 1;
 		lower_instruct.type = 1;
 	}
-	
-	final_instruct = (higher_instruct.needed > lower_instruct.needed) ? lower_instruct : higher_instruct;
-	printf("| Higher: %d (%s) Lower: %d (%s)| |Instruction %s for %d mv\n",higher_instruct.needed,higher_instruct.type == 0 ? "rb" : "rrb", lower_instruct.needed, lower_instruct.type == 0 ? "rb" : "rrb", final_instruct.type == 0 ? "rb" : "rrb", final_instruct.needed);
+	if (higher_instruct.needed > lower_instruct.needed)
+		final_instruct = lower_instruct;
+	else
+		final_instruct = higher_instruct;
+	//printf("| Higher: %d (%s) Lower: %d (%s)| |Instruction %s for %d mv\n",higher_instruct.needed,higher_instruct.type == 0 ? "rb" : "rrb", lower_instruct.needed, lower_instruct.type == 0 ? "rb" : "rrb", final_instruct.type == 0 ? "rb" : "rrb", final_instruct.needed);
+	do_instruct(push, final_instruct);
 }
-
 
 int	sort(t_push *push)
 {
 	int median;
 	int size;
 	int i;
-
 	size = get_stack_size(push->stacka);
 	median = get_median(push->stacka);
 	printf("Median %d\n", get_median(push->stacka));
@@ -175,9 +196,50 @@ int	sort(t_push *push)
 		size--;
 	}
 	
-	push->size = get_stack_size(push->stackb);
-	smart_push_a(push);
+		push->ra = 0;
+	while (get_stack_size(push->stackb)  > 0)
+	{
+		push->size = get_stack_size(push->stackb);
+		smart_push_a(push);
+	}
+		pushs(push->stackb, push->stacka);
+		rotate(push->stacka);
+	while (push->ra > 0)
+	{
+		rotate(push->stacka);
+		push->ra--;
+	}
+		i = size;
+	size = get_stack_size(push->stacka);
+	while (size > 0)
+	{
+		if ((*push->stacka)->value >= median)
+		{
+			pushs(push->stacka, push->stackb);
+			printf("pb\n");
+			continue ;
+		}
+		
+		rotate(push->stacka);
+		printf("ra\n");
+		size--;
+	}
 	
+		push->ra = 0;
+	while (get_stack_size(push->stackb)  > 0)
+	{
+		push->size = get_stack_size(push->stackb);
+		smart_push_a(push);
+	}
 
+		pushs(push->stackb, push->stacka);
+		rotate(push->stacka);
+		
+	while (push->ra > 0)
+	{
+		rotate(push->stacka);
+		push->ra--;
+	}
+	
 	return (1);
 }
