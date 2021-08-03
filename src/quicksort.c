@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/03 17:27:44 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/03 17:37:45 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ int get_high_pos(t_stack **stack)
 	while (tmp)
 	{
 		if (tmp->value > value)
+		{
 			pos = i;
+			value = tmp->value;
+		}
 		i++;
 		tmp = tmp->next;
 
@@ -93,7 +96,10 @@ int get_low_pos(t_stack **stack)
 	while (tmp)
 	{
 		if (tmp->value < value)
+		{
 			pos = i;
+			value = tmp->value;
+		}
 		i++;
 		tmp = tmp->next;
 	}
@@ -135,13 +141,13 @@ int smart_push_a(t_push *push)
 	}
 	else
 	{
+		printf("bite bite %d", push->size);
 		lower_instruct.needed = ft_abs(push->size - lower) + 1;
 		lower_instruct.type = 1;
 	}
 	
 	final_instruct = (higher_instruct.needed > lower_instruct.needed) ? lower_instruct : higher_instruct;
 	printf("| Higher: %d (%s) Lower: %d (%s)| |Instruction %s for %d mv\n",higher_instruct.needed,higher_instruct.type == 0 ? "rb" : "rrb", lower_instruct.needed, lower_instruct.type == 0 ? "rb" : "rrb", final_instruct.type == 0 ? "rb" : "rrb", final_instruct.needed);
-
 }
 
 
