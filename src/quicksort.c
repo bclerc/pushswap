@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/03 01:18:05 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/03 17:01:57 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int get_low_pos(t_stack **stack)
 
 	tmp = *stack;
 	pos = 0;
-	value = 0;
+	value = tmp->value;
 	while (tmp)
 	{
 		if (tmp->value < value)
@@ -95,9 +95,49 @@ int get_low_pos(t_stack **stack)
 		tmp = tmp->next;
 	}
 	
-	return (i);
+	return (pos);
 }
 // FIN ICI AUTRE FICHIER
+
+int smart_push_a(t_push *push)
+{
+	// 0 : rb, 1 : rrb 
+		int higher = get_high_pos(push->stackb);
+		int lower = get_low_pos(push->stackb);
+		t_instruct higher_instruct;
+		t_instruct lower_instruct;
+		t_instruct final_instruct;
+	//higher
+
+
+	if (higher  < (push->size / 2))
+	{	
+		higher_instruct.needed = higher;
+		higher_instruct.type = 0;
+	}
+	else
+	{
+
+		higher_instruct.needed = ft_abs(push->size - higher);
+		higher_instruct.type = 1;
+	}
+	
+	if (lower  < (push->size / 2))
+	{
+		lower_instruct.needed = lower;
+		lower_instruct.type = 0;
+	}
+	else
+	{
+		lower_instruct.needed = ft_abs(push->size - lower);
+		lower_instruct.type = 1;
+	}
+	
+	final_instruct = (higher_instruct.needed > lower_instruct.needed) ? lower_instruct : higher_instruct;
+	printf("| Higher: %d (%s) Lower: %d (%s)| |Instruction %s for %d mv\n",higher_instruct.needed,higher_instruct.type == 0 ? "rb" : "rrb", lower_instruct.needed, lower_instruct.type == 0 ? "rb" : "rrb", final_instruct.type == 0 ? "rb" : "rrb", final_instruct.needed);
+
+}
+
 
 int	sort(t_push *push)
 {
@@ -108,10 +148,9 @@ int	sort(t_push *push)
 	size = get_stack_size(push->stacka);
 	median = get_median(push->stacka);
 	printf("Median %d\n", get_median(push->stacka));
-	i = size;	
+	i = size;
 	while (size > 0)
 	{
-		printf("\n| %d < %d| \n", (*push->stacka)->value, median);
 		if ((*push->stacka)->value < median)
 		{
 			pushs(push->stacka, push->stackb);
@@ -123,30 +162,10 @@ int	sort(t_push *push)
 		printf("ra\n");
 		size--;
 	}
-	while (i > 0)
-	{
-		int higher = get_high_pos(push->stackb);
-		int lower = get_low_pos(push->stackb);
-		int total_instruct = 0;
-		if (i)
-		i-->
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	push->size = get_stack_size(push->stackb);
+	smart_push_a(push);
+	
 
 	return (1);
 }

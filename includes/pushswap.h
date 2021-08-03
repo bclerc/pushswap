@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/03 01:01:26 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/03 15:28:50 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,18 @@ typedef struct		s_stack
 
 }				t_stack;
 
+typedef	struct		s_instruct 
+{
+	int	type;
+	int	needed;
+}					t_instruct;
+
+
 typedef struct s_push
 {
 	int 	totalnumber;
 	int		argc;
-	int		sizea;
-	int		sizeb;
+	int		size;
 	t_stack **stacka;
 	t_stack **stackb;
 
