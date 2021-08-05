@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 23:47:23 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/02 21:29:14 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/05 20:28:08 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int get_stack_size(t_stack **stack)
         tmp = tmp->next;   
         i++;
     }
-
     return (i);
 }
 
