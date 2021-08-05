@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/05 20:53:47 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/05 21:02:22 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,28 @@ int smart_push_a(t_push *push)
 	do_instruct(push, final_instruct);
 }
 
+int check_if_ra(t_push *push, int part, int median)
+{
+	t_stack *tmp;
+
+	tmp = *push->stacka;
+	while (tmp)
+	{
+		if (part)
+		{
+			if (tmp->value > median)
+				return (1);
+		}
+		else
+		{
+			if (tmp->value < median)
+				return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	sort(t_push *push)
 {
 	int party;
@@ -191,7 +213,7 @@ int	sort(t_push *push)
 	party = 0;
 	while (party < 2)
 	{
-		while (size > 0)
+		while (size > 0 && check_if_ra(push, party, median))
 		{
 			if (party == 0)
 			{

@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/05 17:47:16 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/05 20:56:22 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 	{
 		sort(push);
 	}
-	//readList(*push->stacka);
-	//readList(*push->stackb);
+	readList(*push->stacka);
+	readList(*push->stackb);
 	return (1);
 }
