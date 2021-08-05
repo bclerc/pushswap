@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/05 14:59:30 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/05 17:30:41 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,24 @@ void	do_instruct(t_push *push, t_instruct instruct)
 	while (i < instruct.needed)
 	{
 		if (instruct.type)
+		{
 			reverse_rotate(push->stackb);
+			printf("rrb\n");
+		}
 		else
+		{
 			rotate(push->stackb);
+			printf("rb\n");
+		}
 		i++;
 	}
 	pushs(push->stackb, push->stacka);
+	printf("pa\n");
 	if (!instruct.top)
+	{
 		rotate(push->stacka);
+		printf("ra\n");
+	}
 }
 
 	// 0 : rb, 1 : rrb 
@@ -171,68 +181,55 @@ int smart_push_a(t_push *push)
 
 int	sort(t_push *push)
 {
+	int party;
 	int median;
 	int size;
 	int i;
 	size	= 	get_stack_size(push->stacka);
 	median	= 	get_median(push->stacka);
-	printf("Median %d\n", get_median(push->stacka));
-	while (size > 0)
-	{
-		if ((*push->stacka)->value <= median)
-		{
-			pushs(push->stacka, push->stackb);
-			printf("pb\n");
-			continue ;
-		}
-		
-		rotate(push->stacka);
-		printf("ra\n");
-		size--;
-	}
 	
-		push->ra = 0;
-
-	while (get_stack_size(push->stackb)  > 0)
+	party = 0;
+	while (party < 2)
 	{
-		push->size = get_stack_size(push->stackb);
-		smart_push_a(push);
-		i++;
-	}
-	printf("Total : %d", i);
-		pushs(push->stackb, push->stacka);
-		rotate(push->stacka);
-	while (push->ra > 0)
-	{
-		rotate(push->stacka);
-		push->ra--;
-	}	
-	while (i > 0)
-	{
-		if ((*push->stacka)->value > median)
+		while (size > 0)
 		{
-			pushs(push->stacka, push->stackb);
-			printf("pb\n");
-			continue ;
+			if (party == 0)
+			{
+				if ((*push->stacka)->value <= median)
+				{
+					pushs(push->stacka, push->stackb);
+					printf("pb\n");
+					continue ;
+				}
+			}
+			else if ((*push->stacka)->value > median)
+			{
+				pushs(push->stacka, push->stackb);
+				printf("pb\n");
+				continue ;
+			}
+			rotate(push->stacka);
+			printf("ra\n");
+			size--;
 		}
-		
-		rotate(push->stacka);
-		printf("ra\n");
-		i--;
-	}
-	
 		push->ra = 0;
-	while (get_stack_size(push->stackb)  > 0)
-	{
-		push->size = get_stack_size(push->stackb);
-		smart_push_a(push);
-	}
-		pushs(push->stackb, push->stacka);
-		rotate(push->stacka);
-	while (push->ra  + 4 > 0)
-	{
-		rotate(push->stacka);
-		push->ra--;
+		while (get_stack_size(push->stackb)  > 0)
+		{
+			push->size = get_stack_size(push->stackb);
+			smart_push_a(push);
+			i++;
+		}
+			pushs(push->stackb, push->stacka);
+			rotate(push->stacka);
+			printf("ra\n");
+		while (push->ra > 0)
+		{
+			rotate(push->stacka);
+			printf("ra\n");
+			push->ra--;
+		}
+		size = i;
+		party++;
 	}
 	return (1);
 }
