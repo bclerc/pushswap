@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/03 17:58:29 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/23 14:04:34 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	 	add(int number, t_stack** stack);
 void	readList(t_stack *stack);
 void	stackdel(t_stack *alst);
 void	stackdelone(t_stack *alst);
-int	sort(t_push *push);
+int		sort(t_push *push);
 void	small_sort(t_push *push);
 void 	three_sort(t_stack **stack);
 
