@@ -12,6 +12,8 @@ SOURCES = \
 		./src/push_swap.c \
 		./src/clean.c \
 		./src/quicksort.c \
+		./src/median.c \
+		./src/algo_utils.c \
 		./src/small_sort.c \
 		./src/three_sort.c \
 		./src/utils.c \

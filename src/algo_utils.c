@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:50:13 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/23 14:54:37 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/23 17:26:08 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	do_instruct(t_push *push, t_instruct instruct)
 {
-	int i;
+	int	i;
 
-	i = 0;
+	i = -1;
 	if (instruct.top)
 		push->ra = push->ra + 1;
-	while (i < instruct.needed)
+	while (++i < instruct.needed)
 	{
 		if (instruct.type)
 		{
@@ -31,7 +31,6 @@ void	do_instruct(t_push *push, t_instruct instruct)
 			rotate(push->stackb);
 			ft_putstr("rb\n");
 		}
-		i++;
 	}
 	pushs(push->stackb, push->stacka);
 	ft_putstr("pa\n");
@@ -42,28 +41,12 @@ void	do_instruct(t_push *push, t_instruct instruct)
 	}
 }
 
-void smart_push_a(t_push *push)
+t_instruct	get_lower_instruct(t_push *push)
 {
-	int			higher;
-	int			lower;
-	t_instruct	higher_instruct;
 	t_instruct	lower_instruct;
-	t_instruct	final_instruct;
-	
-	higher = get_high_pos(push->stackb);
-	lower = get_low_pos(push->stackb);
+	int			lower;
 
-	higher_instruct.top = 1;
-	if (higher < (push->size / 2))
-	{	
-		higher_instruct.needed = higher;
-		higher_instruct.type = 0;
-	}
-	else
-	{
-		higher_instruct.needed = ft_abs(push->size - higher) + 1;
-		higher_instruct.type = 1;
-	}
+	lower = get_low_pos(push->stackb);
 	lower_instruct.top = 0;
 	if (lower < (push->size / 2))
 	{
@@ -75,6 +58,29 @@ void smart_push_a(t_push *push)
 		lower_instruct.needed = ft_abs(push->size - lower) + 1;
 		lower_instruct.type = 1;
 	}
+	return (lower_instruct);
+}
+
+void	smart_push_a(t_push *push)
+{
+	int			higher;
+	t_instruct	higher_instruct;
+	t_instruct	lower_instruct;
+	t_instruct	final_instruct;
+
+	higher = get_high_pos(push->stackb);
+	higher_instruct.top = 1;
+	if (higher < (push->size / 2))
+	{	
+		higher_instruct.needed = higher;
+		higher_instruct.type = 0;
+	}
+	else
+	{
+		higher_instruct.needed = ft_abs(push->size - higher) + 1;
+		higher_instruct.type = 1;
+	}
+	lower_instruct = get_lower_instruct(push);
 	if (higher_instruct.needed > lower_instruct.needed)
 		final_instruct = lower_instruct;
 	else
