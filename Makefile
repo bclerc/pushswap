@@ -15,6 +15,7 @@ SOURCES = \
 		./src/median.c \
 		./src/algo_utils.c \
 		./src/small_sort.c \
+		./src/big_sort.c \
 		./src/three_sort.c \
 		./src/utils.c \
 		./src/five_sort.c \

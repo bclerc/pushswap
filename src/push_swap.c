@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/23 17:07:23 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/24 15:34:05 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ t_stack *createstack(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-
+		if (is_in_stack(argv[i], &list)
+			//Error ici pas valide
 		tmp = (t_stack *)malloc(sizeof(t_stack));
 		tmp->value = ft_atoi(argv[i]);
 		tmp->next = NULL;
@@ -59,7 +60,6 @@ t_stack *createstack(int argc, char **argv)
 		}
 		i++;
 	}
-
 	return (list);
 }
 
@@ -106,10 +106,10 @@ int main(int argc, char **argv)
 	{
 		five_sort(push);
 	}
-	if (argc > 10)
-	{
+	if (argc > 10 && argc < 400)
 		sort(push);
-	}
+	if (argc > 400)
+		big_sort(push);
 	readList(*push->stacka);
 	readList(*push->stackb);
 	return (1);

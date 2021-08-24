@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/23 14:51:34 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/24 15:28:02 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ typedef struct s_push
 
 }				t_push;
 
-t_median get_all_median(t_stack **stack);
-int		get_stack_size(t_stack **stack);
-int		pushs(t_stack **stack, t_stack **stack2);
-void	five_sort(t_push *push);
-int 	three_sa(t_stack **stack);
+t_median	get_all_median(t_stack **stack);
+int			get_stack_size(t_stack **stack);
+int			is_in_stack(int value, t_stack **stack);
+int			repush_a(t_push *push, int *i);
+int			big_sort(t_push *push);
+int			pushs(t_stack **stack, t_stack **stack2);
+void		five_sort(t_push *push);
+int			three_sa(t_stack **stack);
 int 	three_sa_rra(t_stack **stack);
 int		three_ra(t_stack **stack);
 int		three_sa_ra(t_stack **stack);
