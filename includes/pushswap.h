@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/24 15:28:02 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/24 16:45:03 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,37 +55,38 @@ typedef struct s_push
 }				t_push;
 
 t_median	get_all_median(t_stack **stack);
+void		exit_error(t_push *push, char *msg);
+void 		ss(t_push *push);
+void		rr(t_push *push);
+void		five_sort(t_push *push);
+void		swap(t_stack **stack);
+void		readList(t_stack *stack);
+void		stackdel(t_stack *alst);
+void		stackdelone(t_stack *alst);
+void 		three_sort(t_stack **stack);
+void		smagll_sort(t_push *push);
+void		do_instruct(t_push *push, t_instruct instruct);
+void		smart_push_a(t_push *push);
+void		value_sort(int *value, int len);
 int			get_stack_size(t_stack **stack);
 int			is_in_stack(int value, t_stack **stack);
 int			repush_a(t_push *push, int *i);
 int			big_sort(t_push *push);
 int			pushs(t_stack **stack, t_stack **stack2);
-void		five_sort(t_push *push);
 int			three_sa(t_stack **stack);
-int 	three_sa_rra(t_stack **stack);
-int		three_ra(t_stack **stack);
-int		three_sa_ra(t_stack **stack);
-int		three_rra(t_stack **stack);
-void 	ss(t_push *push);
-void	rr(t_push *push);
-int		rrr(t_push *push);
-int		reverse_rotate(t_stack **stack);
-void	swap(t_stack **stack);
-int		rotate(t_stack **stack);
-int 	check_sort(t_stack *stack);
-int	 	add(int number, t_stack** stack);
-void	readList(t_stack *stack);
-void	stackdel(t_stack *alst);
-void	stackdelone(t_stack *alst);
-int		sort(t_push *push);
-void	smagll_sort(t_push *push);
-void 	three_sort(t_stack **stack);
-int		get_median(t_stack **stack);
-int		get_high_pos(t_stack **stack);
-int		get_low_pos(t_stack **stack);
-void	do_instruct(t_push *push, t_instruct instruct);
-void	smart_push_a(t_push *push);
-void	value_sort(int *value, int len);
-int		check_if_ra(t_push *push, int part, int median);
+int 		three_sa_rra(t_stack **stack);
+int			three_ra(t_stack **stack);
+int			three_sa_ra(t_stack **stack);
+int			three_rra(t_stack **stack);
+int			rrr(t_push *push);
+int			reverse_rotate(t_stack **stack);
+int			rotate(t_stack **stack);
+int 		check_sort(t_stack *stack);
+int	 		add(int number, t_stack** stack);
+int			sort(t_push *push);
+int			get_median(t_stack **stack);
+int			get_high_pos(t_stack **stack);
+int			get_low_pos(t_stack **stack);
+int			check_if_ra(t_push *push, int part, int median);
 
 # endif

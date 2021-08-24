@@ -13,6 +13,7 @@ SOURCES = \
 		./src/clean.c \
 		./src/quicksort.c \
 		./src/median.c \
+		./src/check.c \
 		./src/algo_utils.c \
 		./src/small_sort.c \
 		./src/big_sort.c \

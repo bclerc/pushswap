@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/24 15:34:05 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/24 16:58:47 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ t_stack *createstack(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (is_in_stack(argv[i], &list)
-			//Error ici pas valide
+		if (!isNumber(argv[i]))
+			exit_error(NULL, "Please insert only numbers");
+		if (is_in_stack(ft_atoi(argv[i]), &list))
+			exit_error(NULL, "Duplicate number");
 		tmp = (t_stack *)malloc(sizeof(t_stack));
 		tmp->value = ft_atoi(argv[i]);
 		tmp->next = NULL;
@@ -89,7 +91,6 @@ int main(int argc, char **argv)
 	t_push *push;
 	t_stack *stacka;
 	t_stack *stackb;
-
 	push = malloc(sizeof(t_push));
 	if (argc < 2)
 	{
