@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 15:03:29 by bclerc            #+#    #+#             */
-/*   Updated: 2021/07/28 16:14:29 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/24 19:59:07 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ void	rr(t_push *push)
 {
 	rotate(push->stacka);
 	rotate(push->stackb);
-
 }
