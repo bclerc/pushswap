@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/24 19:56:18 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/25 16:36:17 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	readList(t_stack *stack)
 	tmp = stack;
 	while (tmp->next)
 	{
+		if (tmp->next->value < tmp->value)
+			ft_putstr(">>>> ");
 		ft_putnbr(tmp->value);
 		ft_putchar(' ');
 		tmp = tmp->next;
@@ -110,7 +112,5 @@ int	main(int argc, char **argv)
 		sort(push);
 	if (argc > 400)
 		big_sort(push);
-	readList(*push->stacka);
-	readList(*push->stackb);
 	return (1);
 }
