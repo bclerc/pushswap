@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:41:07 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/24 19:57:38 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 17:59:30 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_median	get_all_median(t_stack **stack)
 	t_median	median;
 
 	tab = malloc((get_stack_size(stack) * sizeof(int)) + 1);
+	if (!tab)
+		exit(1);
 	tmp = *stack;
 	i = 0;
 	while (tmp)
@@ -34,6 +36,7 @@ t_median	get_all_median(t_stack **stack)
 	median.quarter = tab[i];
 	median.median = tab[i * 2];
 	median.three_quarter = tab[i * 3];
+	free(tab);
 	return (median);
 }
 
@@ -44,6 +47,8 @@ int	get_median(t_stack **stack)
 	t_stack	*tmp;
 
 	tab = malloc((get_stack_size(stack) * sizeof(int)) + 1);
+	if (!tab)
+		exit(1);
 	tmp = *stack;
 	i = 0;
 	while (tmp)
@@ -54,5 +59,6 @@ int	get_median(t_stack **stack)
 	}
 	tab[i] = 0;
 	value_sort(tab, i);
+	free(tab);
 	return (tab[i / 2]);
 }

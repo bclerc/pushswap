@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 15:49:40 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 18:04:33 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,16 @@ void	readList(t_stack *stack)
 	printf("\n");
 }
 
+void	free_stack(t_stack *stack)
+{
+	if (stack)
+	{
+		if (stack->next)
+			free_stack(stack->next);
+		free(stack);	
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_push	*push;
@@ -104,7 +114,7 @@ int	main(int argc, char **argv)
 	stackb = createstack(0, NULL);
 	push->stacka = &stacka;
 	push->stackb = &stackb;
-	if (argc < 5)
+	if (argc < 6)
 		three_sort(&stacka);
 	if (argc == 6)
 		five_sort(push);
@@ -114,5 +124,8 @@ int	main(int argc, char **argv)
 		big_sort(push);
 	readList(*push->stacka);
 	readList(*push->stackb);
+	free_stack(*push->stacka);
+	free_stack(*push->stackb);
+	free(push);
 	return (1);
 }
