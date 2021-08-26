@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 14:49:10 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 15:41:30 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,6 @@ void	push_median_b(t_push *push, int *size, int party, int median)
 
 int	repush_a(t_push *push, int *i)
 {
-	int total;
-
-	total = 0;
 	while (get_stack_size(push->stackb) > 0)
 	{
 		push->size = get_stack_size(push->stackb);

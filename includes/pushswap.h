@@ -6,12 +6,12 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 14:49:03 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 15:52:46 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef _PUSHSWAP_
+# define _PUSH_SWAP_
 # include "libft/libft.h"
 # include <stdio.h>
 # define THREE_SA "sa"
@@ -91,4 +91,4 @@ int			get_high_pos(t_stack **stack);
 int			get_low_pos(t_stack **stack);
 int			check_if_ra(t_push *push, int part, int median);
 
-# endif
+#endif

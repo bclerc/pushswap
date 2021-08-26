@@ -6,16 +6,16 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 20:06:34 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/24 20:09:06 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 15:48:00 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int		check_insert(int value, t_stack **stack)
+int	check_insert(int value, t_stack **stack)
 {
-	t_stack *tmp;
-	int i;
+	t_stack	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = *stack;
@@ -28,11 +28,27 @@ int		check_insert(int value, t_stack **stack)
 		tmp = tmp->next;
 		i++;
 	}
-	return -1;
+	return (-1);
 }
+
+void	_do_insert(t_push *push, int insert_pos)
+{
+	printf("pa\n");
+	pushs(push->stackb, push->stacka);
+	if (insert_pos > 0)
+	{
+		while (insert_pos > 0)
+		{
+			printf("rra\n");
+			reverse_rotate(push->stacka);
+			insert_pos--;
+		}
+	}
+}
+
 void	_sort(t_push *push, int insert_pos)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (insert_pos == -1)
@@ -49,17 +65,7 @@ void	_sort(t_push *push, int insert_pos)
 			rotate(push->stacka);
 			i++;
 		}
-		printf("pa\n");
-		pushs(push->stackb, push->stacka);
-		if (insert_pos > 0)
-		{
-			while (insert_pos > 0)
-			{
-				printf("rra\n");
-				reverse_rotate(push->stacka);
-				insert_pos--;
-			}
-		}
+		_do_insert(push, insert_pos);
 	}
 }
 

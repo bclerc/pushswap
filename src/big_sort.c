@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:29:47 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 14:55:32 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 15:40:59 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	check_if_ra_b(t_push *push, int part, int *i, t_median median)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
-
 
 	tmp = *push->stacka;
 	while (tmp)
@@ -36,10 +35,7 @@ int	check_if_ra_b(t_push *push, int part, int *i, t_median median)
 		tmp = tmp->next;
 	}
 	if (push->tried != 0 && tmp2->value != push->tried && part > 0)
-	{
 		return (1);
-	}
-	
 	return (0);
 }
 
@@ -63,7 +59,7 @@ int	push_median_bb_s(t_push *push, int *size, int party, t_median median)
 
 void	push_median_bb(t_push *push, int *size, int party, t_median median)
 {
-	int i;
+	int	i;
 
 	i = push->tried;
 	while (check_if_ra_b(push, party, &i, median))

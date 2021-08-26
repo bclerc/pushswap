@@ -6,15 +6,15 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:50:13 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 14:48:49 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 15:50:38 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-t_stack *get_last(t_stack **stack)
+t_stack	*get_last(t_stack **stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *stack;
 	while (tmp->next)
