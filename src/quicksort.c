@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/25 15:57:15 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 14:49:10 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ int	repush_a(t_push *push, int *i)
 		push->size = get_stack_size(push->stackb);
 		smart_push_a(push);
 		i++;
-		total++;
 	}
 	i++;
-	push->tried += total + 1;
 	pushs(push->stackb, push->stacka);
 	ft_putstr("pa\n");
 	rotate(push->stacka);

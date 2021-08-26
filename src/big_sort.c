@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:29:47 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/25 16:52:50 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 14:55:32 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	check_if_ra_b(t_push *push, int part, int *i, t_median median)
 {
 	t_stack	*tmp;
+	t_stack	*tmp2;
+
 
 	tmp = *push->stacka;
 	while (tmp)
@@ -29,14 +31,15 @@ int	check_if_ra_b(t_push *push, int part, int *i, t_median median)
 			return (1);
 		if (part == 3 && tmp->value > median.three_quarter)
 			return (1);
+		if (!tmp->next)
+			tmp2 = tmp;
 		tmp = tmp->next;
 	}
-
-	if (*i > 0)
+	if (push->tried != 0 && tmp2->value != push->tried && part > 0)
 	{
-		(*i)--;
 		return (1);
 	}
+	
 	return (0);
 }
 
@@ -63,7 +66,7 @@ void	push_median_bb(t_push *push, int *size, int party, t_median median)
 	int i;
 
 	i = push->tried;
-	while (*size > 0 && check_if_ra_b(push, party, &i, median))
+	while (check_if_ra_b(push, party, &i, median))
 	{
 		if (party == 0 && (*push->stacka)->value <= median.quarter)
 		{
@@ -97,13 +100,13 @@ int	big_sort(t_push *push)
 	median = get_all_median(push->stacka);
 	push->tried = 0;
 	party = 0;
-	size = get_stack_size(push->stacka);
 	while (party < 4)
 	{
-	size = get_stack_size(push->stacka);
+		size = get_stack_size(push->stacka);
 		push_median_bb(push, &size, party, median);
 		push->ra = 0;
 		repush_a(push, &i);
+		push->tried = get_last(push->stacka)->value;
 		size = i;
 		party++;
 	}

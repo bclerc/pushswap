@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/25 14:27:06 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 14:49:03 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_push
 }				t_push;
 
 t_median	get_all_median(t_stack **stack);
+t_stack		*get_last(t_stack **stack);
 void		exit_error(t_push *push, char *msg);
 void 		ss(t_push *push);
 void		rr(t_push *push);

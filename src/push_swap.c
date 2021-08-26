@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/25 16:36:17 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/26 14:56:04 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ int	main(int argc, char **argv)
 		sort(push);
 	if (argc > 400)
 		big_sort(push);
+
 	return (1);
 }
