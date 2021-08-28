@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 18:04:33 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/28 19:51:24 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,37 +65,16 @@ t_stack	*createstack(int argc, char **argv)
 	return (list);
 }
 
-void	readList(t_stack *stack)
+void	dispatch(int argc, t_push *push)
 {
-	t_stack	*tmp;
-
-	if (stack == NULL)
-	{
-		printf("Empty stack\n");
-		return ;
-	}
-	tmp = stack;
-	while (tmp->next)
-	{
-		if (tmp->next->value < tmp->value)
-			ft_putstr(">>>> ");
-		ft_putnbr(tmp->value);
-		ft_putchar(' ');
-		tmp = tmp->next;
-	}
-	ft_putnbr(tmp->value);
-	ft_putchar(' ');
-	printf("\n");
-}
-
-void	free_stack(t_stack *stack)
-{
-	if (stack)
-	{
-		if (stack->next)
-			free_stack(stack->next);
-		free(stack);	
-	}
+	if (argc < 6 && argc > 2)
+		three_sort(push->stacka);
+	if (argc == 6)
+		five_sort(push);
+	if (argc > 6 && argc < 400)
+		sort(push);
+	if (argc > 400)
+		big_sort(push);
 }
 
 int	main(int argc, char **argv)
@@ -114,16 +93,7 @@ int	main(int argc, char **argv)
 	stackb = createstack(0, NULL);
 	push->stacka = &stacka;
 	push->stackb = &stackb;
-	if (argc < 6)
-		three_sort(&stacka);
-	if (argc == 6)
-		five_sort(push);
-	if (argc > 6 && argc < 400)
-		sort(push);
-	if (argc > 400)
-		big_sort(push);
-	readList(*push->stacka);
-	readList(*push->stackb);
+	dispatch(argc, push);
 	free_stack(*push->stacka);
 	free_stack(*push->stackb);
 	free(push);

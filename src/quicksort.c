@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 15:41:30 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/28 19:33:46 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	repush_a(t_push *push, int *i)
 		ft_putstr("ra\n");
 		push->ra--;
 	}
+	return (1);
 }
 
 int	sort(t_push *push)

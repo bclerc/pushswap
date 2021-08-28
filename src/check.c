@@ -6,14 +6,46 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 14:54:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/24 19:58:49 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/28 19:52:55 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
+void	readList(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	if (stack == NULL)
+	{
+		printf("Empty stack\n");
+		return ;
+	}
+	tmp = stack;
+	while (tmp->next)
+	{
+		ft_putnbr(tmp->value);
+		ft_putchar(' ');
+		tmp = tmp->next;
+	}
+	ft_putnbr(tmp->value);
+	ft_putchar(' ');
+	printf("\n");
+}
+
+void	free_stack(t_stack *stack)
+{
+	if (stack)
+	{
+		if (stack->next)
+			free_stack(stack->next);
+		free(stack);
+	}
+}
+
 void	exit_error(t_push *push, char *msg)
 {
+	(void)push;
 	printf("Error\n%s\n", msg);
 	exit(1);
 }

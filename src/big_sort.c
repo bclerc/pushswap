@@ -6,13 +6,13 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:29:47 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/26 15:40:59 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/28 19:35:51 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int	check_if_ra_b(t_push *push, int part, int *i, t_median median)
+int	check_if_ra_b(t_push *push, int part, t_median median)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -39,7 +39,7 @@ int	check_if_ra_b(t_push *push, int part, int *i, t_median median)
 	return (0);
 }
 
-int	push_median_bb_s(t_push *push, int *size, int party, t_median median)
+int	push_median_bb_s(t_push *push, int party, t_median median)
 {
 	if (party == 2 && (*push->stacka)->value > median.median
 		&& (*push->stacka)->value <= median.three_quarter)
@@ -62,7 +62,7 @@ void	push_median_bb(t_push *push, int *size, int party, t_median median)
 	int	i;
 
 	i = push->tried;
-	while (check_if_ra_b(push, party, &i, median))
+	while (check_if_ra_b(push, party, median))
 	{
 		if (party == 0 && (*push->stacka)->value <= median.quarter)
 		{
@@ -77,7 +77,7 @@ void	push_median_bb(t_push *push, int *size, int party, t_median median)
 			ft_putstr("pb\n");
 			continue ;
 		}
-		else if (push_median_bb_s(push, size, party, median))
+		else if (push_median_bb_s(push, party, median))
 			continue ;
 		rotate(push->stacka);
 		ft_putstr("ra\n");
