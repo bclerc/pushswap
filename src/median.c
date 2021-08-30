@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:41:07 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 16:59:32 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/30 19:29:51 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_median	get_all_median(t_stack **stack)
 	t_stack		*tmp;
 	t_median	median;
 
-	tab = malloc((get_stack_size(stack) * sizeof(int)) + 1);
+	tab = malloc(((get_stack_size(stack) + 1) * sizeof(int)));
 	if (!tab)
 		exit(1);
 	tmp = *stack;
@@ -30,7 +30,6 @@ t_median	get_all_median(t_stack **stack)
 		tmp = tmp->next;
 		i++;
 	}
-	tab[i] = 0;
 	value_sort(tab, i);
 	i = i / 4;
 	median.quarter = tab[i];
@@ -47,7 +46,7 @@ int	get_median(t_stack **stack)
 	int		i;
 	t_stack	*tmp;
 
-	tab = malloc((get_stack_size(stack) * sizeof(int)) + 1);
+	tab = (int *)malloc(((get_stack_size(stack) + 1) * sizeof(int)));
 	if (!tab)
 		exit(1);
 	tmp = *stack;
@@ -58,9 +57,9 @@ int	get_median(t_stack **stack)
 		tmp = tmp->next;
 		i++;
 	}
-	tab[i] = 0;
 	value_sort(tab, i);
+	i = tab[i / 2];
 	free(tab);
 	tmp = NULL;
-	return (tab[i / 2]);
+	return (i);
 }
