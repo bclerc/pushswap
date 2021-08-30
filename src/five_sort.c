@@ -6,83 +6,61 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 20:06:34 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 17:07:48 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/30 18:22:59 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int	check_insert(int value, t_stack **stack)
+void	_insert(t_push *push, int b, int value)
 {
-	t_stack	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = *stack;
-	while (tmp->next)
+	while ((*push->stacka)->value != value)
 	{
-		if (i == 0 && value < tmp->value)
-			return (0);
-		if (value > tmp->value && value < tmp->next->value)
-			return (i + 1);
-		tmp = tmp->next;
-		i++;
-	}
-	return (-1);
-}
-
-void	_do_insert(t_push *push, int insert_pos)
-{
-	printf("pa\n");
-	pushs(push->stackb, push->stacka);
-	if (insert_pos > 0)
-	{
-		while (insert_pos > 0)
-		{
-			printf("rra\n");
-			reverse_rotate(push->stacka);
-			insert_pos--;
-		}
-	}
-}
-
-void	_sort(t_push *push, int insert_pos)
-{
-	int	i;
-
-	i = 0;
-	if (insert_pos == -1)
-	{
-		pushs(push->stackb, push->stacka);
-		rotate(push->stacka);
-		printf("pa\nra\n");
-	}
-	else
-	{
-		while (i < insert_pos)
+		if (b < 3)
 		{
 			printf("ra\n");
 			rotate(push->stacka);
-			i++;
 		}
-		_do_insert(push, insert_pos);
+		else
+		{
+			printf("rra\n");
+			reverse_rotate(push->stacka);
+		}
 	}
+	printf("pb\n");
+	pushs(push->stacka, push->stackb);
+}
+
+void	push_smallest(t_push *push)
+{
+	int		value;
+	int		i;
+	int		b;
+	t_stack	*tmp;
+
+	i = 0;
+	b = 0;
+	value = (*push->stacka)->value;
+	tmp = *push->stacka;
+	while (tmp)
+	{
+		if (tmp->value < value)
+		{
+			b = i;	
+			value = tmp->value;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	_insert(push, b, value);
 }
 
 void	five_sort(t_push *push)
 {
-	int	i;
-	int	insert_pos;
-
-	pushs(push->stacka, push->stackb);
-	pushs(push->stacka, push->stackb);
-	printf("pb\npb\n");
+	push_smallest(push);
+	push_smallest(push);
 	three_sort(push->stacka);
-	i = 2;
-	while (i > 0)
-	{
-		insert_pos = check_insert((*push->stackb)->value, push->stacka);
-		_sort(push, insert_pos);
-		i--;
-	}
+	pushs(push->stackb, push->stacka);
+	pushs(push->stackb, push->stacka);
+	printf("pa\npa\n");
 }
