@@ -28,7 +28,7 @@ SOURCES = \
 OBJECTS = $(SOURCES:.c=.o)
 
 FSANITIZE = -fsanitize=address
-FLAGS = -Werror -Wall -Wextra
+FLAGS = -Werror -Wall -Wextra 
 CC = clang
 
 NO_COLOR =		\033[38;5;15m

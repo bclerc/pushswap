@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/28 19:51:24 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/30 14:39:20 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,15 @@ int	main(int argc, char **argv)
 	push = malloc(sizeof(t_push));
 	if (argc < 2)
 	{
-		printf("Please insert a lot of numbers");
+		exit_error();
 		return (-1);
 	}
 	stacka = createstack(argc, argv);
 	stackb = createstack(0, NULL);
 	push->stacka = &stacka;
 	push->stackb = &stackb;
-	dispatch(argc, push);
+	if (!check_sort(stacka))
+		dispatch(argc, push);
 	free_stack(*push->stacka);
 	free_stack(*push->stackb);
 	free(push);
