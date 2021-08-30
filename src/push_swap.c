@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 14:39:20 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/30 17:07:49 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ t_stack	*createstack(int argc, char **argv)
 	while (i < argc)
 	{
 		if (!isNumber(argv[i]))
-			exit_error(NULL, "Please insert only numbers");
+			exit_error();
 		if (is_in_stack(ft_atoi(argv[i]), &list))
-			exit_error(NULL, "Duplicate number");
+			exit_error();
 		tmp = (t_stack *)malloc(sizeof(t_stack));
 		tmp->value = ft_atoi(argv[i]);
 		tmp->next = NULL;
@@ -71,7 +71,7 @@ void	dispatch(int argc, t_push *push)
 		three_sort(push->stacka);
 	if (argc == 6)
 		five_sort(push);
-	if (argc > 6 && argc < 400)
+	if ((argc > 6 && argc < 400) || argc == 5)
 		sort(push);
 	if (argc > 400)
 		big_sort(push);

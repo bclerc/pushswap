@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:58:27 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 14:36:34 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/30 16:59:51 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_push
 t_median	get_all_median(t_stack **stack);
 t_stack		*get_last(t_stack **stack);
 void		free_stack(t_stack *stack);
-void		exit_error();
+void		exit_error(void);
 void		ss(t_push *push);
 void		rr(t_push *push);
 void		five_sort(t_push *push);

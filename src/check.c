@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 14:54:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 14:33:47 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/30 16:59:26 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-void	exit_error()
+void	exit_error(void)
 {
 	printf("Error\n");
 	exit(1);
