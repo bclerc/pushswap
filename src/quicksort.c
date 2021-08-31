@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 12:21:43 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/28 19:33:46 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/31 13:58:25 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	check_if_ra(t_push *push, int part, int median)
 
 void	push_median_b(t_push *push, int *size, int party, int median)
 {
-	while (size > 0 && check_if_ra(push, party, median))
+	while (check_if_ra(push, party, median))
 	{
+		if (size == 0)
+			break ; 
 		if (party == 0)
 		{
 			if ((*push->stacka)->value <= median)

@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 17:21:21 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/31 13:54:07 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	main(int argc, char **argv)
 	push->stackb = &stackb;
 	if (!check_sort(stacka))
 		dispatch(argc, push);
+	readList(*push->stacka);
+	readList(*push->stackb);
 	free_stack(*push->stacka);
 	free_stack(*push->stackb);
 	free(push);

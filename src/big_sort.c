@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 14:29:47 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/28 19:35:51 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/31 13:58:57 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,6 @@ int	push_median_bb_s(t_push *push, int party, t_median median)
 
 void	push_median_bb(t_push *push, int *size, int party, t_median median)
 {
-	int	i;
-
-	i = push->tried;
 	while (check_if_ra_b(push, party, median))
 	{
 		if (party == 0 && (*push->stacka)->value <= median.quarter)
