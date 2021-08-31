@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 16:01:06 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/31 13:54:07 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/31 17:20:31 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ t_stack	*createstack(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (ft_atol(argv[i]) > 2147483647
+			|| ft_atol(argv[i]) < -2147483648)
+			exit_error();
 		if (!isNumber(argv[i]))
 			exit_error();
 		if (is_in_stack(ft_atoi(argv[i]), &list))
@@ -57,9 +60,7 @@ t_stack	*createstack(int argc, char **argv)
 		if (!list)
 			list = tmp;
 		else
-		{
 			add_value_to_stack(tmp, list);
-		}
 		i++;
 	}
 	return (list);
@@ -85,18 +86,13 @@ int	main(int argc, char **argv)
 
 	push = malloc(sizeof(t_push));
 	if (argc < 2)
-	{
-		exit_error();
 		return (-1);
-	}
 	stacka = createstack(argc, argv);
 	stackb = createstack(0, NULL);
 	push->stacka = &stacka;
 	push->stackb = &stackb;
 	if (!check_sort(stacka))
 		dispatch(argc, push);
-	readList(*push->stacka);
-	readList(*push->stackb);
 	free_stack(*push->stacka);
 	free_stack(*push->stackb);
 	free(push);

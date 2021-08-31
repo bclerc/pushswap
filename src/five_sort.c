@@ -6,7 +6,7 @@
 /*   By: bclerc <bclerc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 20:06:34 by bclerc            #+#    #+#             */
-/*   Updated: 2021/08/30 18:22:59 by bclerc           ###   ########.fr       */
+/*   Updated: 2021/08/31 17:14:01 by bclerc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	push_smallest(t_push *push)
 	{
 		if (tmp->value < value)
 		{
-			b = i;	
+			b = i;
 			value = tmp->value;
 		}
 		tmp = tmp->next;

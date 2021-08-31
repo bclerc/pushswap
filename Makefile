@@ -1,5 +1,5 @@
-NAME = pushswap
-PROJECT_NAME = pushswap
+NAME = push_swap
+PROJECT_NAME = push_swap
 
 SOURCES_FOLDER = ./
 INCLUDES_FOLDER = includes/libft/
@@ -49,12 +49,12 @@ $(LIBS):
 	@printf "$(NO_COLOR)-----------------------\n\n"
 
 $(NAME): $(OBJECTS) $(LIBS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -L$(INCLUDES_FOLDER) -lft
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -L$(INCLUDES_FOLDER) -lft
 	@printf "$(INFO_COLOR)$(NAME) $(NO_COLOR)successfully compiled. $(OK_COLOR)✓$(NO_COLOR)\n"
 
 force: $(OBJECTS)
 	@printf "$(NO_COLOR)All objects for $(INFO_COLOR)$(PROJECT_NAME) $(NO_COLOR)where successfully created.\n"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -g
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -g
 	@printf "$(INFO_COLOR)$(NAME) $(NO_COLOR)successfully compiled. $(OK_COLOR)✓$(NO_COLOR)\n"
 
 %.o: %.c
